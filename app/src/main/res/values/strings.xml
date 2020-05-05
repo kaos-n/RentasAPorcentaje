@@ -10,6 +10,7 @@
     <string name="selmes">Selecciona el mes: </string>
     <string name="mostrar">Mostrar</string>
     <string name="mes">Mes</string>
+    <string name="año">Año</string>
     <string name="ingreso">Ingreso: </string>
     <string name="renta">Renta: </string>
     <string name="detalle">ver detalle</string>

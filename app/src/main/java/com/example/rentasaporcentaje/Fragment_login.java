@@ -24,7 +24,7 @@ public class Fragment_login extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.login,container,false);
+        return inflater.inflate(R.layout.login, container, false);
 
     }
 
@@ -42,24 +42,23 @@ public class Fragment_login extends Fragment {
         txtUsuario = view.findViewById(R.id.txtUsuario);
         txtContrasena = view.findViewById(R.id.txtContrasena);
         btnAceptar = view.findViewById(R.id.btnAceptar);
-        final String usuario=txtUsuario.getText().toString();
-        final String contrasena=txtContrasena.getText().toString();
+
 
         btnAceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*if(usuario.equals("") || contrasena.equals("")) {
-                    Toast.makeText(getActivity(), "Debes ingresar tu usuario y contraseña", Toast.LENGTH_SHORT).show();
-                }
-                else {*/
-                    Navigation.findNavController(v).navigate(R.id.next_action);
-                //}
+                String usuario = txtUsuario.getText().toString();
+                String contrasena = txtContrasena.getText().toString();
 
+                if (usuario.equals("") || contrasena.equals("")) {
+                    Toast.makeText(getActivity(), "Debes ingresar tu usuario y contraseña", Toast.LENGTH_SHORT).show();
+                } else {
+                    Navigation.findNavController(v).navigate(R.id.next_action);
+                }
 
             }
         });
+
+
     }
 }
-
-
-
