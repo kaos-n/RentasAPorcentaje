@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo"
+    tools:context=".Rentas_por_mes" >
+
+    <TextView
+        android:id="@+id/txtAno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/selanio"
+        android:textColor="@android:color/secondary_text_light"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnMostrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="@string/mostrar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selmes" />
+
+    <TextView
+        android:id="@+id/LblIngreso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="112dp"
+        android:layout_marginLeft="112dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/ingreso"
+        android:textColor="@android:color/secondary_text_light"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TxtMes" />
+
+    <TextView
+        android:id="@+id/TxtIngreso"
+        android:layout_width="155dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="20dp"
+        android:background="#FFFFFF"
+        android:text="@string/pesos"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.382"
+        app:layout_constraintStart_toEndOf="@+id/LblIngreso"
+        app:layout_constraintTop_toBottomOf="@+id/TxtMes" />
+
+    <TextView
+        android:id="@+id/txtRenta"
+        android:layout_width="155dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="24dp"
+        android:background="#FFFFFF"
+        android:text="@string/pesos"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.39"
+        app:layout_constraintStart_toEndOf="@+id/LblRenta"
+        app:layout_constraintTop_toBottomOf="@+id/TxtIngreso" />
+
+    <TextView
+        android:id="@+id/LblRenta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="124dp"
+        android:layout_marginLeft="124dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/renta"
+        android:textColor="@android:color/secondary_text_light"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LblIngreso" />
+
+    <Spinner
+        android:id="@+id/selmes"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMes" />
+
+    <TextView
+        android:id="@+id/TxtMes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="@string/mes"
+        android:textColor="@android:color/secondary_text_light"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnMostrar" />
+
+    <Spinner
+        android:id="@+id/selanio"
+        style="@android:style/Widget.DeviceDefault.Light.Spinner"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtAno" />
+
+    <TextView
+        android:id="@+id/txtMes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/selmes"
+        android:textColor="@android:color/secondary_text_light"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.053"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selanio" />
+
+    <Button
+        android:id="@+id/BtnDetalle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="@string/detalle"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtRenta" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

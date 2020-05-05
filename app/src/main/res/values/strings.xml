@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Ingresos y rentas a porcentaje</string>
+    <string name="inicia_sesion">INICIA SESION</string>
+    <string name="usuario">Usuario</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="aceptar">aceptar</string>
+    <string name="bienvenido">Bienvenido</string>
+    <string name="verrentasmensuales">Ver rentas por mes</string>
+    <string name="selanio">Selecciona el año: </string>
+    <string name="selmes">Selecciona el mes: </string>
+    <string name="mostrar">Mostrar</string>
+    <string name="mes">Mes</string>
+    <string name="ingreso">Ingreso: </string>
+    <string name="renta">Renta: </string>
+    <string name="detalle">ver detalle</string>
+    <string name="pesos">$</string>
+    <string name="volver">volver</string>
+    <string name="ingreso_cadenas">Ingreso cadenas: </string>
+    <string name="renta_cadenas">Renta cadenas: </string>
+    <string name="ingreso_WM">Ingreso WM: </string>
+    <string name="renta_WM">Renta WM: </string>
+    <string name="total_ingresos">Total Ingresos: </string>
+    <string name="total_renta">Total Rentas: </string>
+    <string name="total_equipos">Total Equipos: </string>
+    <string name="en_PV">En Punto de Venta </string>
+    <string name="en_WM">En Wal Mart </string>
+    <string name="basc">Básculas: </string>
+    <string name="kr">Kiddie Ride: </string>
+    <string name="pel">Pelucheras: </string>
+    <string name="vid">Videojuegos: </string>
+    <string name="chic">Chicleras: </string>
+    <string name="sill">Sillones: </string>
+    <string name="cabina">Cábina: </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+
+</resources>
