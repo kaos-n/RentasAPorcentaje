@@ -21,6 +21,8 @@
         <action
             android:id="@+id/ir_a_rentas"
             app:destination="@id/rentas_por_mes" />
+        <argument android:name="usuario"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/rentas_por_mes"
@@ -39,5 +41,6 @@
         <action
             android:id="@+id/regresar"
             app:destination="@id/rentas_por_mes" />
+        <argument android:name="mes" />
     </fragment>
 </navigation>

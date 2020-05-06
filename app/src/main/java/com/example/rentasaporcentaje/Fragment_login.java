@@ -53,6 +53,7 @@ public class Fragment_login extends Fragment {
                 if (usuario.equals("") || contrasena.equals("")) {
                     Toast.makeText(getActivity(), "Debes ingresar tu usuario y contraseña", Toast.LENGTH_SHORT).show();
                 } else {
+
                     Navigation.findNavController(v).navigate(R.id.next_action);
                 }
 
