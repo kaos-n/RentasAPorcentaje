@@ -79,7 +79,7 @@ public class Fragment_inicio extends Fragment {
         txtBienvenido = view.findViewById(R.id.txtBienvenido);
         BtnRentas = view.findViewById(R.id.btnRentas);
 
-        txtBienvenido.setText("Bienvenido "+ usuario);
+        //txtBienvenido.setText("Bienvenido "+ usuario);
 
         BtnRentas.setOnClickListener(new View.OnClickListener() {
             @Override

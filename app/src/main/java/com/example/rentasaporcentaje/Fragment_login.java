@@ -17,7 +17,8 @@ import androidx.navigation.Navigation;
 
 public class Fragment_login extends Fragment {
 
-    private EditText txtUsuario, txtContrasena;
+    private EditText txtUsuario;
+    private EditText txtContrasena;
     private Button btnAceptar;
 
 
@@ -54,7 +55,16 @@ public class Fragment_login extends Fragment {
                     Toast.makeText(getActivity(), "Debes ingresar tu usuario y contraseña", Toast.LENGTH_SHORT).show();
                 } else {
 
-                    Navigation.findNavController(v).navigate(R.id.next_action);
+
+                    //esta deberia ser la forma de pasar datos
+
+
+                    txtUsuario = getView().findViewById(R.id.txtUsuario);
+                    int user = Integer.parseInt(txtUsuario.getText().toString());
+                    Fragment_loginDirections.NextAction action = Fragment_loginDirections.nextAction(usuario);
+                            action.setUsuario(usuario);
+                    Navigation.findNavController(v).navigate(action);
+                    //Navigation.findNavController(v).navigate(R.id.next_action);
                 }
 
             }
