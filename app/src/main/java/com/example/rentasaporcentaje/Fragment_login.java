@@ -26,7 +26,6 @@ public class Fragment_login extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.login, container, false);
-
     }
 
     @Override
@@ -60,11 +59,11 @@ public class Fragment_login extends Fragment {
 
 
                     txtUsuario = getView().findViewById(R.id.txtUsuario);
-                    int user = Integer.parseInt(txtUsuario.getText().toString());
-                    Fragment_loginDirections.NextAction action = Fragment_loginDirections.nextAction(usuario);
-                            action.setUsuario(usuario);
-                    Navigation.findNavController(v).navigate(action);
-                    //Navigation.findNavController(v).navigate(R.id.next_action);
+                    String user = txtUsuario.getText().toString();
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("user",user);
+                    Navigation.findNavController(v).navigate(R.id.next_action, bundle);
                 }
 
             }
