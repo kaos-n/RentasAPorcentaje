@@ -31,8 +31,6 @@ public class Fragment_login extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
     }
 
     @Override
@@ -54,9 +52,7 @@ public class Fragment_login extends Fragment {
                     Toast.makeText(getActivity(), "Debes ingresar tu usuario y contraseña", Toast.LENGTH_SHORT).show();
                 } else {
 
-
                     //esta deberia ser la forma de pasar datos
-
 
                     txtUsuario = getView().findViewById(R.id.txtUsuario);
                     String user = txtUsuario.getText().toString();

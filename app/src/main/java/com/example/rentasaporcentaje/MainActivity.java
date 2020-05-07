@@ -18,8 +18,7 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private Button btnAceptar;
-    private TextView txtBienvenido;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,21 +27,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.ic_launcher);
 
-        //donde esta mi onViewCreated
-        //txtBienvenido.setText(getArguments().getString("usuario"));
-
-
-
     }
 
 
 
     @Override
     public void onClick(View view) {
-
-
-        Navigation.findNavController(view).navigate(R.id.next_action);
-
 
 
     }

@@ -17,7 +17,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 
-/**
+/*
  * A simple {@link Fragment} subclass.
  * Use the {@link Rentas_por_mes#newInstance} factory method to
  * create an instance of this fragment.
@@ -25,16 +25,16 @@ import android.widget.TextView;
 public class Rentas_por_mes extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    //private static final String ARG_PARAM1 = "param1";
+    //private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    //private String mParam1;
+    //private String mParam2;
     private String mes, anio;
     private Button btnMostrar;
     private Button btnDetalle;
-    private TextView TxtMes, LblIngreso, LblRenta, txtIngreso, txtRenta, TxtAnio;
+    private TextView TxtMes, LblIngreso, LblRenta, txtIngreso, txtRenta;
 
     private Spinner meses, anios;
 
@@ -42,7 +42,7 @@ public class Rentas_por_mes extends Fragment {
         // Required empty public constructor
     }
 
-    /**
+    /*
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
@@ -51,22 +51,22 @@ public class Rentas_por_mes extends Fragment {
      * @return A new instance of fragment Rentas_por_mes.
      */
     // TODO: Rename and change types and number of parameters
-    public static Rentas_por_mes newInstance(String param1, String param2) {
+    /*public static Rentas_por_mes newInstance(String param1, String param2) {
         Rentas_por_mes fragment = new Rentas_por_mes();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+      //  args.putString(ARG_PARAM1, param1);
+        //args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
-    }
+    }*/
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        //if (getArguments() != null) {
+          //  mParam1 = getArguments().getString(ARG_PARAM1);
+            //mParam2 = getArguments().getString(ARG_PARAM2);
+        //}
     }
 
     @Override
@@ -138,7 +138,12 @@ public class Rentas_por_mes extends Fragment {
                 btnDetalle.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Navigation.findNavController(v).navigate(R.id.ir_a_detalle);
+
+                        TxtMes = getView().findViewById(R.id.TxtMes);
+                        String fecha = TxtMes.getText().toString();
+                        Bundle bundle2 = new Bundle();
+                        bundle2.putString("fecha",fecha);
+                        Navigation.findNavController(v).navigate(R.id.ir_a_detalle, bundle2);
                     }
                 });
             }
