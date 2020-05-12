@@ -42,6 +42,7 @@ import java.util.Map;
 
 public class Fragment_login extends Fragment {
 
+    public static Usuario usuarioactual;
     private EditText txtUsuario;
     private EditText txtContrasena;
     private Button btnAceptar;
@@ -74,17 +75,12 @@ public class Fragment_login extends Fragment {
                 final String usuario = txtUsuario.getText().toString();
                 final String contrasena = txtContrasena.getText().toString();
 
+
+
                 if (usuario.equals("") || contrasena.equals("")) {
                     Toast.makeText(getActivity(), "Debes ingresar tu usuario y contraseña", Toast.LENGTH_SHORT).show();
                     return;
-                } //else {
-
-                    //esta deberia ser la forma de pasar datos
-
-                        //Bundle bundle = new Bundle();
-                        //bundle.putString("user",usuario);
-                        //Navigation.findNavController(v).navigate(R.id.next_action, bundle);
-                    //}
+                }
 
                 Thread tr = new Thread(){
                     @Override
@@ -98,10 +94,11 @@ public class Fragment_login extends Fragment {
                                 Usuario[] usuarios = new Gson().fromJson(resultado,Usuario[].class);
                                 if (usuarios.length>0){
                                     //txtUsuario = getView().findViewById(R.id.txtUsuario);
-                                    String user = txtUsuario.getText().toString();
+                                    //usuario = txtUsuario.getText().toString();
+                                    Fragment_login.usuarioactual = usuarios[0];
 
                                     Bundle bundle = new Bundle();
-                                    bundle.putString("user",user);
+                                    bundle.putString("user",usuario);
                                     Navigation.findNavController(v).navigate(R.id.next_action, bundle);
                                 }else{
                                     Toast.makeText(getActivity(), "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
@@ -114,22 +111,6 @@ public class Fragment_login extends Fragment {
                 };
                 tr.start();
 
-
-                /*
-                if (usuario.equals("") || contrasena.equals("")) {
-                    Toast.makeText(getActivity(), "Debes ingresar tu usuario y contraseña", Toast.LENGTH_SHORT).show();
-                } else {
-
-                    //esta deberia ser la forma de pasar datos
-
-                    txtUsuario = getView().findViewById(R.id.txtUsuario);
-                    String user = txtUsuario.getText().toString();
-
-                    Bundle bundle = new Bundle();
-                    bundle.putString("user",user);
-                    Navigation.findNavController(v).navigate(R.id.next_action, bundle);
-                }
-*/
             }
         });
 

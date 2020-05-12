@@ -7,17 +7,28 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.rentasaporcentaje.R;
+import com.example.rentasaporcentaje.models.Usuario;
+import com.example.rentasaporcentaje.web_methods.Web_Service;
+import com.google.gson.Gson;
+
+import org.json.JSONArray;
+
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.HashMap;
 
 public class Fragment_inicio extends Fragment {
 
-    public String usuario;
+    private String usuario;
     private Button BtnRentas;
     public TextView txtBienvenido;
 
@@ -46,10 +57,12 @@ public class Fragment_inicio extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //Fragment_login.user = new Usuario().getfullname();
+
         txtBienvenido = view.findViewById(R.id.txtBienvenido);
         BtnRentas = view.findViewById(R.id.btnRentas);
 
-        txtBienvenido.setText("Bienvenido \n"+ usuario);
+        txtBienvenido.setText("Bienvenido \n"+ Fragment_login.usuarioactual);
 
         BtnRentas.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +71,6 @@ public class Fragment_inicio extends Fragment {
             }
         });
 
-
     }
+
 }
