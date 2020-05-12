@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragment_login"
-        android:name="com.example.rentasaporcentaje.Fragment_login"
+        android:name="com.example.rentasaporcentaje.UI.fragments.Fragment_login"
         android:label="Fragment_login" >
         <action
             android:id="@+id/next_action"
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_inicio"
-        android:name="com.example.rentasaporcentaje.Fragment_inicio"
+        android:name="com.example.rentasaporcentaje.UI.fragments.Fragment_inicio"
         android:label="fragment_inicio"
         tools:layout="@layout/fragment_inicio" >
         <action
@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/rentas_por_mes"
-        android:name="com.example.rentasaporcentaje.Rentas_por_mes"
+        android:name="com.example.rentasaporcentaje.UI.fragments.Fragment_Rentas_por_mes"
         android:label="fragment_rentas_por_mes"
         tools:layout="@layout/fragment_rentas_por_mes" >
         <action
@@ -35,7 +35,7 @@
     </fragment>
     <fragment
         android:id="@+id/info_mensual"
-        android:name="com.example.rentasaporcentaje.Info_mensual"
+        android:name="com.example.rentasaporcentaje.UI.fragments.Fragment_Info_mensual"
         android:label="fragment_info_mensual"
         tools:layout="@layout/fragment_info_mensual" >
         <action

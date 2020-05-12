@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo"
-    tools:context=".Rentas_por_mes">
+    tools:context=".UI.fragments.Fragment_Rentas_por_mes">
 
     <TextView
         android:id="@+id/txtAno"

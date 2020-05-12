@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondodos"
-    tools:context=".Info_mensual" >
+    tools:context=".UI.fragments.Fragment_Info_mensual" >
 
     <TextView
         android:id="@+id/TxtDetalle"
