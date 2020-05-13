@@ -25,6 +25,7 @@ public class Fragment_Info_mensual extends Fragment {
     // TODO: Rename and change types of parameters
 
     private String fecha;
+    private String mes, anio;
     private Button btnVolver;
     private TextView TxtDetalle;
     public Fragment_Info_mensual() {
@@ -54,7 +55,8 @@ public class Fragment_Info_mensual extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            fecha = getArguments().getString("fecha");
+            mes = getArguments().getString("mes");
+            anio = getArguments().getString("anio");
         }
     }
 
@@ -71,7 +73,7 @@ public class Fragment_Info_mensual extends Fragment {
 
         btnVolver = view.findViewById(R.id.BtnVolver);
         TxtDetalle = view.findViewById(R.id.TxtDetalle);
-        TxtDetalle.setText("Detalle "+fecha);
+        TxtDetalle.setText("Detalle "+ mes+" "+anio);
 
 
         btnVolver.setOnClickListener(new View.OnClickListener() {

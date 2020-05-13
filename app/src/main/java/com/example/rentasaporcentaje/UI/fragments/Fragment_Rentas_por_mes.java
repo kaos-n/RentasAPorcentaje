@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +16,23 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.rentasaporcentaje.R;
+import com.example.rentasaporcentaje.models.Ingresos;
+import com.example.rentasaporcentaje.models.Usuario;
+import com.example.rentasaporcentaje.web_methods.Web_Service;
+import com.google.gson.Gson;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 
 /*
@@ -137,6 +153,33 @@ public class Fragment_Rentas_por_mes extends Fragment {
                 txtRenta.setVisibility(View.VISIBLE);
                 btnDetalle.setVisibility(View.VISIBLE);
 
+
+                Thread tr = new Thread(){
+                    @Override
+                    public void run() {
+                        super.run();
+
+                        final String resultado = enviarDatosGET(mes,anio);
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+
+
+                                Ingresos[] ingreso = new Gson().fromJson(resultado,Ingresos[].class);
+
+
+
+
+                            }
+                        });
+
+                    }
+
+                };
+                tr.start();
+
+
+
                 btnDetalle.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -144,11 +187,49 @@ public class Fragment_Rentas_por_mes extends Fragment {
                         TxtMes = getView().findViewById(R.id.TxtMes);
                         String fecha = TxtMes.getText().toString();
                         Bundle bundle2 = new Bundle();
-                        bundle2.putString("fecha",fecha);
+                        bundle2.putString("mes",mes);
+                        bundle2.putString("anio",anio);
                         Navigation.findNavController(v).navigate(R.id.ir_a_detalle, bundle2);
                     }
                 });
             }
         });
+    }
+
+    public String enviarDatosGET (String mes, String anio) {
+
+        URL url = null;
+        String linea;
+        int respuesta = 0;
+        String resul = null;
+
+        try {
+            url = new URL("http://10.0.2.2/conexionBD/ingresos.php?mes=" + mes + "&anio=" + anio);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            respuesta = connection.getResponseCode();
+
+            HashMap<String, String> parameters = new HashMap<>();
+            parameters.put("mes",mes);
+            parameters.put("anio",anio);
+
+            resul = Web_Service.getJsonPOSTmethod("http://10.0.2.2/conexionBD/ingresos.php",parameters);
+
+
+        } catch (Exception e) {
+            Log.e("Fragment_Rentas_por_mes", "Error: " +e.getMessage());
+        }
+        return resul.toString();
+    }
+
+    public int obtDatosJSON (String response){
+        int res=0;
+        try{
+            JSONArray json = new JSONArray(response);
+            if(json.length()>0){
+                res=1;
+            }
+        } catch (Exception e){}
+
+        return res;
     }
 }
