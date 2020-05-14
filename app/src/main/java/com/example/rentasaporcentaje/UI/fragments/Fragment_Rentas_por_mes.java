@@ -58,6 +58,7 @@ public class Fragment_Rentas_por_mes extends Fragment {
     private Button btnMostrar;
     private Button btnDetalle;
     private TextView TxtMes, LblIngreso, LblRenta, txtIngreso, txtRenta;
+    public String basc, KR, pel, vid, chic, sill, cab, bascWM, KRWM, pelWM, vidWM, chicWM, totalequipos, ingresoPV, rentaPV, ingresoWM, rentaWM, ingresototal, rentatotal;
 
 
     private Spinner meses, anios;
@@ -171,30 +172,43 @@ public class Fragment_Rentas_por_mes extends Fragment {
                             public void run() {
 
 
-                                    //Ingresos[] ingreso = new Gson().fromJson(resultado, Ingresos[].class);
+
                                     JsonParser parser = new JsonParser();
                                     JsonArray array = parser.parse(resultado).getAsJsonArray();
                                     for(JsonElement obj : array){
                                         JsonObject object = obj.getAsJsonObject();
 
-                                        double ingresototal = object.get("Ingreso_Total").getAsDouble();
-                                        double rentatotal = object.get("Renta_Total").getAsDouble();
+                                        ingresototal = object.get("Ingreso_Total").getAsString();
+                                        rentatotal = object.get("Renta_Total").getAsString();
 
-                                        String ingtot = String.valueOf(ingresototal);
-                                        txtIngreso.setText(ingtot);
-                                        String rentot = String.valueOf(rentatotal);
-                                        txtRenta.setText(rentot);
+                                        txtIngreso.setText(" $ "+ingresototal);
+                                        txtRenta.setText(" $ "+rentatotal);
+
+                                        basc = object.get("Basc").getAsString();
+                                        KR = object.get("KR").getAsString();
+                                        pel = object.get("Pel").getAsString();
+                                        vid = object.get("Vid").getAsString();
+                                        chic = object.get("Chic").getAsString();
+                                        sill = object.get("Sill").getAsString();
+                                        cab = object.get("Cab").getAsString();
+                                        bascWM = object.get("Basc_WM").getAsString();
+                                        KRWM = object.get("KR_WM").getAsString();
+                                        pelWM = object.get("Pel_WM").getAsString();
+                                        vidWM = object.get("Vid_WM").getAsString();
+                                        chicWM = object.get("Chic_WM").getAsString();
+                                        totalequipos = object.get("Total_Equipos").getAsString();
+                                        ingresoPV = object.get("Ingreso_PV").getAsString();
+                                        rentaPV = object.get("Renta_PV").getAsString();
+                                        ingresoWM = object.get("Ingreso_WM").getAsString();
+                                        rentaWM = object.get("Renta_WM").getAsString();
+
+
                                     }
-
-
                             }
                         });
-
                     }
-
                 };
                 tr.start();
-
 
 
                 btnDetalle.setOnClickListener(new View.OnClickListener() {
@@ -206,6 +220,27 @@ public class Fragment_Rentas_por_mes extends Fragment {
                         Bundle bundle2 = new Bundle();
                         bundle2.putString("mes",mes);
                         bundle2.putString("anio",anio);
+                        bundle2.putString("Basc",basc);
+                        bundle2.putString("KR",KR);
+                        bundle2.putString("Pel",pel);
+                        bundle2.putString("Vid",vid);
+                        bundle2.putString("Chic",chic);
+                        bundle2.putString("Sill",sill);
+                        bundle2.putString("Cab",cab);
+                        bundle2.putString("Basc_WM",bascWM);
+                        bundle2.putString("KR_WM",KRWM);
+                        bundle2.putString("Pel_WM",pelWM);
+                        bundle2.putString("Vid_WM",vidWM);
+                        bundle2.putString("Chic_WM",chicWM);
+                        bundle2.putString("Total_Equipos",totalequipos);
+                        bundle2.putString("Ingreso_PV",ingresoPV);
+                        bundle2.putString("Renta_PV",rentaPV);
+                        bundle2.putString("Ingreso_WM",ingresoWM);
+                        bundle2.putString("Renta_WM",rentaWM);
+                        bundle2.putString("Ingreso_Total",ingresototal);
+                        bundle2.putString("Renta_Total",rentatotal);
+
+
                         Navigation.findNavController(v).navigate(R.id.ir_a_detalle, bundle2);
                     }
                 });

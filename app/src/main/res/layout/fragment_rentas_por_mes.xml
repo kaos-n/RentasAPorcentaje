@@ -49,13 +49,12 @@
 
     <TextView
         android:id="@+id/TxtIngreso"
-        android:layout_width="155dp"
+        android:layout_width="170dp"
         android:layout_height="25dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="48dp"
         android:layout_marginRight="48dp"
         android:background="#FFFFFF"
-        android:digits='"0123456789.,$"'
         android:text="@string/pesos"
         android:textSize="18sp"
         android:visibility="invisible"
@@ -64,11 +63,10 @@
 
     <TextView
         android:id="@+id/txtRenta"
-        android:layout_width="155dp"
+        android:layout_width="170dp"
         android:layout_height="25dp"
         android:layout_marginTop="20dp"
         android:background="#FFFFFF"
-        android:digits='"0123456789.,$"'
         android:text="@string/pesos"
         android:textSize="18sp"
         android:visibility="invisible"
@@ -81,8 +79,8 @@
         android:id="@+id/LblRenta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="124dp"
-        android:layout_marginLeft="124dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginLeft="120dp"
         android:layout_marginTop="20dp"
         android:text="@string/renta"
         android:textColor="@android:color/secondary_text_light"
