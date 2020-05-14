@@ -1,5 +1,6 @@
 package com.example.rentasaporcentaje.UI.fragments;
 
+import android.content.pm.LabeledIntent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -23,6 +24,10 @@ import com.example.rentasaporcentaje.models.Ingresos;
 import com.example.rentasaporcentaje.models.Usuario;
 import com.example.rentasaporcentaje.web_methods.Web_Service;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -53,6 +58,7 @@ public class Fragment_Rentas_por_mes extends Fragment {
     private Button btnMostrar;
     private Button btnDetalle;
     private TextView TxtMes, LblIngreso, LblRenta, txtIngreso, txtRenta;
+
 
     private Spinner meses, anios;
 
@@ -165,9 +171,20 @@ public class Fragment_Rentas_por_mes extends Fragment {
                             public void run() {
 
 
-                                Ingresos[] ingreso = new Gson().fromJson(resultado,Ingresos[].class);
+                                    //Ingresos[] ingreso = new Gson().fromJson(resultado, Ingresos[].class);
+                                    JsonParser parser = new JsonParser();
+                                    JsonArray array = parser.parse(resultado).getAsJsonArray();
+                                    for(JsonElement obj : array){
+                                        JsonObject object = obj.getAsJsonObject();
 
+                                        double ingresototal = object.get("Ingreso_Total").getAsDouble();
+                                        double rentatotal = object.get("Renta_Total").getAsDouble();
 
+                                        String ingtot = String.valueOf(ingresototal);
+                                        txtIngreso.setText(ingtot);
+                                        String rentot = String.valueOf(rentatotal);
+                                        txtRenta.setText(rentot);
+                                    }
 
 
                             }

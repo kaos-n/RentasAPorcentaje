@@ -55,6 +55,7 @@
         android:layout_marginEnd="48dp"
         android:layout_marginRight="48dp"
         android:background="#FFFFFF"
+        android:digits='"0123456789.,$"'
         android:text="@string/pesos"
         android:textSize="18sp"
         android:visibility="invisible"
@@ -67,6 +68,7 @@
         android:layout_height="25dp"
         android:layout_marginTop="20dp"
         android:background="#FFFFFF"
+        android:digits='"0123456789.,$"'
         android:text="@string/pesos"
         android:textSize="18sp"
         android:visibility="invisible"
