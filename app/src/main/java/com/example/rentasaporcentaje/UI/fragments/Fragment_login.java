@@ -7,6 +7,9 @@ import android.util.JsonReader;
 import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -17,6 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
 
 import com.example.rentasaporcentaje.R;
 import com.example.rentasaporcentaje.models.Usuario;
@@ -45,18 +49,30 @@ public class Fragment_login extends Fragment {
     public static Usuario usuarioactual;
     private EditText txtUsuario;
     private EditText txtContrasena;
-    private Button btnAceptar;
+    private Button btnAceptar, btnRegistrar;
     //final String url = "http://10.0.2.2/conexionBD/conexion.php";
+
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+
+        super.onCreateOptionsMenu(menu, inflater);
+
+    }
+
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.login, container, false);
+
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -66,6 +82,15 @@ public class Fragment_login extends Fragment {
         txtUsuario = view.findViewById(R.id.txtUsuario);
         txtContrasena = view.findViewById(R.id.txtContrasena);
         btnAceptar = view.findViewById(R.id.btnAceptar);
+        btnRegistrar = view.findViewById(R.id.btnRegistrar);
+
+        btnRegistrar.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.action_registrar_usuario);
+            }
+        });
 
         btnAceptar.setOnClickListener(new View.OnClickListener() {
 

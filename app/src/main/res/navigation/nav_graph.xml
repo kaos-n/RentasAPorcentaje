@@ -3,15 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/fragment_login">
+    app:startDestination="@id/Fragment_login">
 
     <fragment
-        android:id="@+id/fragment_login"
+        android:id="@+id/Fragment_login"
         android:name="com.example.rentasaporcentaje.UI.fragments.Fragment_login"
         android:label="Fragment_login" >
+
         <action
             android:id="@+id/next_action"
             app:destination="@id/fragment_inicio" />
+        <action
+            android:id="@+id/action_registrar_usuario"
+            app:destination="@id/fragment_registrar_usuario" />
     </fragment>
     <fragment
         android:id="@+id/fragment_inicio"
@@ -42,5 +46,14 @@
             android:id="@+id/regresar"
             app:destination="@id/rentas_por_mes" />
         <argument android:name="mes" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_registrar_usuario"
+        android:name="com.example.rentasaporcentaje.UI.fragments.Fragment_registrar_usuario"
+        android:label="fragment_registrar_usuario"
+        tools:layout="@layout/fragment_registrar_usuario" >
+        <action
+            android:id="@+id/ira_login"
+            app:destination="@id/Fragment_login" />
     </fragment>
 </navigation>

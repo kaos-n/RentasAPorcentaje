@@ -8,6 +8,9 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -52,6 +55,21 @@ public class Fragment_Info_mensual extends Fragment {
 */
 
     @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.Fragment_login:
+                Navigation.findNavController(getView()).navigate(R.id.Fragment_login);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
@@ -76,7 +94,10 @@ public class Fragment_Info_mensual extends Fragment {
             rentaWM = getArguments().getString("Renta_WM");
             ingresototal = getArguments().getString("Ingreso_Total");
             rentatotal = getArguments().getString("Renta_Total");
+
+
         }
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -117,12 +138,12 @@ public class Fragment_Info_mensual extends Fragment {
 
         TxtDetalle.setText("Detalle "+ mes+" "+anio);
         TxtEquipos.setText(totalequipos);
-        TxtIngCadenas.setText("$ "+ingresoPV);
-        TxtIngreso.setText("$ "+ingresototal);
-        TxtIngWM.setText("$ "+ingresoWM);
-        TxtRenta.setText("$ "+rentatotal);
-        TxtRentaCad.setText("$ "+rentaPV);
-        TxtRentaWM.setText("$ "+rentaWM);
+        TxtIngCadenas.setText(ingresoPV);
+        TxtIngreso.setText(ingresototal);
+        TxtIngWM.setText(ingresoWM);
+        TxtRenta.setText(rentatotal);
+        TxtRentaCad.setText(rentaPV);
+        TxtRentaWM.setText(rentaWM);
 
         LblBasc.setText("Básculas: "+basc);
         LblBascWM.setText("Básculas: "+bascWM);

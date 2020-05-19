@@ -43,7 +43,7 @@
         android:textSize="18sp"
         android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/TxtIngreso"
-        app:layout_constraintHorizontal_bias="0.765"
+        app:layout_constraintHorizontal_bias="0.769"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TxtMes" />
 
@@ -52,8 +52,8 @@
         android:layout_width="170dp"
         android:layout_height="25dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginRight="48dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
         android:background="#FFFFFF"
         android:text="@string/pesos"
         android:textSize="18sp"
@@ -65,13 +65,13 @@
         android:id="@+id/txtRenta"
         android:layout_width="170dp"
         android:layout_height="25dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:background="#FFFFFF"
         android:text="@string/pesos"
         android:textSize="18sp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.39"
+        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toEndOf="@+id/LblRenta"
         app:layout_constraintTop_toBottomOf="@+id/TxtIngreso" />
 

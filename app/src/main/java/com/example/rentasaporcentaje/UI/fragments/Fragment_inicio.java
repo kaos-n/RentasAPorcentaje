@@ -7,24 +7,18 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.rentasaporcentaje.R;
-import com.example.rentasaporcentaje.models.Usuario;
-import com.example.rentasaporcentaje.web_methods.Web_Service;
-import com.google.gson.Gson;
 
-import org.json.JSONArray;
-
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.HashMap;
+import static com.example.rentasaporcentaje.R.*;
 
 public class Fragment_inicio extends Fragment {
 
@@ -36,19 +30,37 @@ public class Fragment_inicio extends Fragment {
         // Required empty public constructor
     }
 
+
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+    inflater.inflate(R.menu.menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.Fragment_login:
+                Navigation.findNavController(getView()).navigate(id.Fragment_login);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             usuario = getArguments().getString("user");
         }
+        setHasOptionsMenu(true);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_inicio, container, false);
+        return inflater.inflate(layout.fragment_inicio, container, false);
 
 
     }
@@ -59,15 +71,15 @@ public class Fragment_inicio extends Fragment {
 
         //Fragment_login.user = new Usuario().getfullname();
 
-        txtBienvenido = view.findViewById(R.id.txtBienvenido);
-        BtnRentas = view.findViewById(R.id.btnRentas);
+        txtBienvenido = view.findViewById(id.txtBienvenido);
+        BtnRentas = view.findViewById(id.btnRentas);
 
         txtBienvenido.setText("Bienvenido \n"+ Fragment_login.usuarioactual.getfullname());
 
         BtnRentas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(v).navigate(R.id.ir_a_rentas);
+                Navigation.findNavController(v).navigate(id.ir_a_rentas);
             }
         });
 

@@ -10,6 +10,9 @@ import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -35,6 +38,7 @@ import org.json.JSONObject;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -58,7 +62,9 @@ public class Fragment_Rentas_por_mes extends Fragment {
     private Button btnMostrar;
     private Button btnDetalle;
     private TextView TxtMes, LblIngreso, LblRenta, txtIngreso, txtRenta;
-    public String basc, KR, pel, vid, chic, sill, cab, bascWM, KRWM, pelWM, vidWM, chicWM, totalequipos, ingresoPV, rentaPV, ingresoWM, rentaWM, ingresototal, rentatotal;
+    public String basc, KR, pel, vid, chic, sill, cab, bascWM, KRWM, pelWM, vidWM, chicWM, totalequipos;
+    public String singresoPV, srentaPV, singresoWM, srentaWM, singresototal, srentatotal;
+    public Double dingresoPV, drentaPV, dingresoWM, drentaWM, dingresototal, drentatotal;
 
 
     private Spinner meses, anios;
@@ -92,6 +98,22 @@ public class Fragment_Rentas_por_mes extends Fragment {
           //  mParam1 = getArguments().getString(ARG_PARAM1);
             //mParam2 = getArguments().getString(ARG_PARAM2);
         //}
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.Fragment_login:
+                Navigation.findNavController(getView()).navigate(R.id.Fragment_login);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -127,12 +149,19 @@ public class Fragment_Rentas_por_mes extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 mes=(selmeses[position]);
+
+                TxtMes.setVisibility(View.INVISIBLE);
+
+                txtIngreso.setVisibility(View.INVISIBLE);
+                txtRenta.setVisibility(View.INVISIBLE);
+                btnDetalle.setVisibility(View.INVISIBLE);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
+
         });
 
         anios.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -152,15 +181,6 @@ public class Fragment_Rentas_por_mes extends Fragment {
             @Override
             public void onClick(View v) {
 
-                TxtMes.setText(mes + " " + anio);
-                TxtMes.setVisibility(View.VISIBLE);
-                LblIngreso.setVisibility(View.VISIBLE);
-                LblRenta.setVisibility(View.VISIBLE);
-                txtIngreso.setVisibility(View.VISIBLE);
-                txtRenta.setVisibility(View.VISIBLE);
-                btnDetalle.setVisibility(View.VISIBLE);
-
-
                 Thread tr = new Thread(){
                     @Override
                     public void run() {
@@ -168,22 +188,43 @@ public class Fragment_Rentas_por_mes extends Fragment {
 
                         final String resultado = enviarDatosGET(mes,anio);
                         getActivity().runOnUiThread(new Runnable() {
+
                             @Override
                             public void run() {
 
-
-
                                     JsonParser parser = new JsonParser();
                                     JsonArray array = parser.parse(resultado).getAsJsonArray();
+
                                     for(JsonElement obj : array){
                                         JsonObject object = obj.getAsJsonObject();
 
-                                        ingresototal = object.get("Ingreso_Total").getAsString();
-                                        rentatotal = object.get("Renta_Total").getAsString();
+                                        TxtMes.setText(mes + " " + anio);
+                                        TxtMes.setVisibility(View.VISIBLE);
+                                        LblIngreso.setVisibility(View.VISIBLE);
+                                        LblRenta.setVisibility(View.VISIBLE);
+                                        txtIngreso.setVisibility(View.VISIBLE);
+                                        txtRenta.setVisibility(View.VISIBLE);
+                                        btnDetalle.setVisibility(View.VISIBLE);
 
-                                        txtIngreso.setText(" $ "+ingresototal);
-                                        txtRenta.setText(" $ "+rentatotal);
+                                        //ingresototal = object.get("Ingreso_Total").getAsString();
+                                        //String.format("%,d",ingresototal);
+                                        dingresototal = object.get("Ingreso_Total").getAsDouble();
+                                        DecimalFormat formato = new DecimalFormat("$##,###,###.00");
+                                        singresototal = formato.format(dingresototal);
+                                        drentatotal = object.get("Renta_Total").getAsDouble();
+                                        srentatotal = formato.format(drentatotal);
 
+                                        txtIngreso.setText(singresototal);
+                                        txtRenta.setText(srentatotal);
+
+                                        dingresoPV = object.get("Ingreso_PV").getAsDouble();
+                                        singresoPV = formato.format(dingresoPV);
+                                        drentaPV = object.get("Renta_PV").getAsDouble();
+                                        srentaPV = formato.format(drentaPV);
+                                        dingresoWM = object.get("Ingreso_WM").getAsDouble();
+                                        singresoWM = formato.format(dingresoWM);
+                                        drentaWM = object.get("Renta_WM").getAsDouble();
+                                        srentaWM = formato.format(drentaWM);
                                         basc = object.get("Basc").getAsString();
                                         KR = object.get("KR").getAsString();
                                         pel = object.get("Pel").getAsString();
@@ -197,18 +238,15 @@ public class Fragment_Rentas_por_mes extends Fragment {
                                         vidWM = object.get("Vid_WM").getAsString();
                                         chicWM = object.get("Chic_WM").getAsString();
                                         totalequipos = object.get("Total_Equipos").getAsString();
-                                        ingresoPV = object.get("Ingreso_PV").getAsString();
-                                        rentaPV = object.get("Renta_PV").getAsString();
-                                        ingresoWM = object.get("Ingreso_WM").getAsString();
-                                        rentaWM = object.get("Renta_WM").getAsString();
-
 
                                     }
+
                             }
                         });
                     }
                 };
                 tr.start();
+
 
 
                 btnDetalle.setOnClickListener(new View.OnClickListener() {
@@ -233,12 +271,12 @@ public class Fragment_Rentas_por_mes extends Fragment {
                         bundle2.putString("Vid_WM",vidWM);
                         bundle2.putString("Chic_WM",chicWM);
                         bundle2.putString("Total_Equipos",totalequipos);
-                        bundle2.putString("Ingreso_PV",ingresoPV);
-                        bundle2.putString("Renta_PV",rentaPV);
-                        bundle2.putString("Ingreso_WM",ingresoWM);
-                        bundle2.putString("Renta_WM",rentaWM);
-                        bundle2.putString("Ingreso_Total",ingresototal);
-                        bundle2.putString("Renta_Total",rentatotal);
+                        bundle2.putString("Ingreso_PV",singresoPV);
+                        bundle2.putString("Renta_PV",srentaPV);
+                        bundle2.putString("Ingreso_WM",singresoWM);
+                        bundle2.putString("Renta_WM",srentaWM);
+                        bundle2.putString("Ingreso_Total",singresototal);
+                        bundle2.putString("Renta_Total",srentatotal);
 
 
                         Navigation.findNavController(v).navigate(R.id.ir_a_detalle, bundle2);
